@@ -19,6 +19,8 @@ export async function getProducts() {
 
 export const getProductId = async (id) => {
     const token = localStorage.getItem('authToken');
+    console.log('Fetching product with ID:', id);
+    console.log('Token:', token);
     try {
 
         const reponse = await axios.get(`${productUrl}/get-one-product/${id}`, {
@@ -41,6 +43,7 @@ export const addProduct = async (products) => {
                 'Content-Type': 'application/json',
             }
         })
+        console.log("Produto criado: ", response.data)
         return response.data
     } catch (error) {
         console.error("Erro ao adicionar produto:", error.message)
@@ -60,6 +63,7 @@ export const updateProduct = async (id, product) => {
         stock
     };
     
+    console.log('Updating product with payload:', payload)
     try {
         const response = await axios.patch(`${productUrl}/update-product/${id}`, payload, {
             headers: {

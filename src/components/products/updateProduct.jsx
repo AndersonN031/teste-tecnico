@@ -3,7 +3,6 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { fetchProductId, handleUpdateProduct } from "../../controllers/productController";
 import { toast, ToastContainer } from "react-toastify";
 
-
 export default function UpdateProduct() {
     const { id } = useParams();
     const [product, setProduct] = useState({
@@ -20,25 +19,27 @@ export default function UpdateProduct() {
         if (!token) {
             navigate('/');
         } else {
-            fetchProductId(id, setProduct)
-
+            fetchProductId(id, setProduct);
         }
     }, [token, navigate, id]);
 
     const handleChange = (e) => {
         const { id, value } = e.target;
-        const parsedValue = id === 'price' || id === 'stock' ? parseFloat(value) : value;
 
+        // Verifica se o campo é um número e converte somente nesses casos
+        const parsedValue = (id === 'price' || id === 'stock') ? parseFloat(value) : value;
+
+        // Atualiza o estado com o valor convertido
         setProduct((prevProduct) => ({
             ...prevProduct,
-            [id]: isNaN(parsedValue) ? '' : parsedValue
+            [id]: (id === 'price' || id === 'stock') && isNaN(parsedValue) ? '' : parsedValue
         }));
     };
 
     const updateProduct = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         try {
-            await handleUpdateProduct(id, product)
+            await handleUpdateProduct(id, product);
             toast.success('Produto atualizado com sucesso!', {
                 position: "bottom-right",
                 autoClose: 1500,
@@ -48,12 +49,11 @@ export default function UpdateProduct() {
                 draggable: true,
                 theme: "colored",
                 progress: undefined
-            })
+            });
 
             setTimeout(() => {
                 navigate('/products');
-
-            }, 2000)
+            }, 2000);
         } catch (error) {
             toast.error('Erro ao tentar atualizar o produto.', {
                 position: "bottom-right",
@@ -64,7 +64,7 @@ export default function UpdateProduct() {
                 draggable: true,
                 theme: "colored",
                 progress: undefined
-            })
+            });
         }
     };
 
@@ -129,5 +129,5 @@ export default function UpdateProduct() {
                 </form>
             </div>
         </>
-    )
+    );
 }

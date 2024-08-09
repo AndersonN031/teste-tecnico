@@ -142,7 +142,7 @@ export default function PrivateRouter() {
                             ) : (
                                 <TableRow>
                                     <TableCell colSpan={4} align="center">
-                                        No products available.
+                                        Nenhum produto disponível.
                                     </TableCell>
                                 </TableRow>
                             )}

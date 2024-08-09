@@ -13,6 +13,7 @@ export const showProducts = async () => {
 export const fetchProductId = async (id, setProduct) => {
     try {
         const data = await getProductId(id)
+        console.log('Pegando produto: ', data.data.product)
         setProduct(data.data.product)
     } catch (error) {
         console.error('Erro ao tentar atualizar o produto', error)
