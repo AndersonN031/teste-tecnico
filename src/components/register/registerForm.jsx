@@ -2,6 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import logo from "../../images/logo.png"
 import 'react-toastify/dist/ReactToastify.css'
 
 const apiUrl = import.meta.env.VITE_API_URL;
@@ -60,8 +61,6 @@ export default function Register() {
             password
         })
             .then(response => {
-                console.log('Registro efetuado com sucesso!');
-                console.log('Resposta: ', response.data);
                 toast.success('Conta criada com sucesso!', {
                     position: "top-right",
                     autoClose: 3000,
@@ -79,7 +78,6 @@ export default function Register() {
                 }, 3000);
             })
             .catch(error => {
-                console.error('Erro ao realizar o registro:', error);
                 setError('Erro ao criar conta, tente novamente!');
             });
     }
@@ -89,7 +87,11 @@ export default function Register() {
             <ToastContainer />
             <div className="register-container">
                 <form onSubmit={handleRegister} className="register-form">
-                    <h1>Crie uma conta</h1>
+                    <h1>
+                        <img src={logo} alt="logo T-Alpha" />
+                        Crie uma conta
+
+                    </h1>
                     <div className="input-group">
                         <span className="input-icon">
                             <i className="bi bi-person"></i>

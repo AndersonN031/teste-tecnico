@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import logo from "../../images/logo.png"
 const apiUrl = import.meta.env.VITE_API_URL;
 
 
@@ -33,14 +34,9 @@ export default function Login() {
                 const token = response.data.data.token;
                 localStorage.setItem('authToken', token);
 
-                console.log('CPF: ', cpf);
-                console.log('Senha: ', password)
-                console.log('Token JWT: ', token)
-
                 navigate('/products')
             })
             .catch(error => {
-                console.error('Erro de autenticação:', error);
                 setError('Credenciais incorretas. Verifique seu CPF e senha.');
                 setCpf('');
                 setPassword('');
@@ -54,7 +50,11 @@ export default function Login() {
         <>
             <div className="login-container">
                 <form onSubmit={handleLogin} className="login-form">
-                    <h1>Entre na sua conta</h1>
+
+                    <h1>
+                        <img src={logo} alt="logo T-Alpha" />
+                        Inicie sua sessão!
+                    </h1>
                     {error && (
                         <div className="error-message" style={{ color: 'red' }}>
                             {error}
