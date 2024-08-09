@@ -7,7 +7,9 @@ const AuthGuard = () => {
     const authToken = localStorage.getItem('authToken');
 
     useEffect(() => {
-        if (authToken && (location.pathname === '/login' || location.pathname === '/register')) {
+        if (!authToken) {
+            navigate('/');
+        } else if (authToken && (location.pathname === '/' || location.pathname === '/register')) {
             navigate('/products');
         }
     }, [authToken, location, navigate]);
