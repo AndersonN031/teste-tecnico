@@ -1,0 +1,20 @@
+{
+    "routes": [
+        {
+            "src": "/products",
+            "dest": "/"
+        },
+        {
+            "src": "/createProducts",
+            "dest": "/"
+        },
+        {
+            "src": "/updateProduct/:id",
+            "dest": "/"
+        },
+        {
+            "src": "/register",
+            "dest": "/"
+        }
+    ]
+}

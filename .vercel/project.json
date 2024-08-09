@@ -1,10 +1,4 @@
 {
     "orgId": "team_i4Qg9DCoMCJycUZQOQsIKsbd",
-    "projectId": "prj_INAACl1zgNzfitByKX4EBHLIQm0z",
-    "rewrites": [
-        {
-            "source": "/(.*)",
-            "destination": "/"
-        }
-    ]
+    "projectId": "prj_INAACl1zgNzfitByKX4EBHLIQm0z"
 }
