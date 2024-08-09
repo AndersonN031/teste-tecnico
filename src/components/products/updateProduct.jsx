@@ -26,10 +26,8 @@ export default function UpdateProduct() {
     const handleChange = (e) => {
         const { id, value } = e.target;
 
-        // Verifica se o campo é um número e converte somente nesses casos
         const parsedValue = (id === 'price' || id === 'stock') ? parseFloat(value) : value;
 
-        // Atualiza o estado com o valor convertido
         setProduct((prevProduct) => ({
             ...prevProduct,
             [id]: (id === 'price' || id === 'stock') && isNaN(parsedValue) ? '' : parsedValue
