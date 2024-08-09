@@ -11,10 +11,10 @@ import UpdateProduct from './components/products/updateProduct';
 
 const AppRoutes = () => (
   <Routes>
-    <Route path="/" Component={Login} />
+    <Route path="/" element={Login} />
     <Route path="/register" element={<Register />} />
-    <Route path="/products" Component={PrivateRouter} />
-    <Route path="/createProducts" Component={CreateProduct} />
+    <Route path="/products" element={PrivateRouter} />
+    <Route path="/createProducts" element={CreateProduct} />
     <Route path='/updateProduct/:id' element={<UpdateProduct />} />
 
   </Routes>
