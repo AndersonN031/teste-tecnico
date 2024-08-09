@@ -8,11 +8,13 @@ const AuthGuard = () => {
 
     useEffect(() => {
         if (!authToken) {
-            navigate('/');
+            if (location.pathname !== '/' && location.pathname !== '/register') {
+                navigate('/', { replace: true });
+            }
         } else if (authToken && (location.pathname === '/' || location.pathname === '/register')) {
-            navigate('/products');
+            navigate('/products', { replace: true });
         }
-    }, [authToken, location, navigate]);
+    }, [authToken, location.pathname, navigate]);
 
     return null;
 };
